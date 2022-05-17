@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity{
                 clickedbtn=findViewById(R.id.button15);
                 break;
             case R.id.button14:
-                clickedbtn=findViewById(R.id.button21);
+                clickedbtn=findViewById(R.id.button14);
                 break;
             case R.id.button13:
                 clickedbtn=findViewById(R.id.button13);
