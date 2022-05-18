@@ -10,12 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnAlphabet">
         <activity
+            android:name=".TestActivity"
+            android:parentActivityName=".MainPage"
+            android:exported="false" />
+        <activity
+            android:name=".MainPage"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Images"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
-
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
+            android:parentActivityName=".MainPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
