@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">Learn Alphabet</string>
+    <string name="a">Apple</string>
+    <string name="b">Boy</string>
+    <string name="c">Cat</string>
+    <string name="d">Duck</string>
+    <string name="e">Elephant</string>
+    <string name="f">Fish</string>
+    <string name="g">Grapes</string>
+    <string name="h">House</string>
+    <string name="i">Ice cream</string>
+    <string name="j">Jeep</string>
+    <string name="k">Kite</string>
+    <string name="l">Lion</string>
+    <string name="m">Moon</string>
+    <string name="n">Nest</string>
+    <string name="o">Owl</string>
+    <string name="p">Parrot</string>
+    <string name="q">Queen</string>
+    <string name="r">Rat</string>
+    <string name="s">Sun</string>
+    <string name="t">Tiger</string>
+    <string name="u">Umbrella</string>
+    <string name="v">Van</string>
+    <string name="w">Watch</string>
+    <string name="x">X-Ray</string>
+    <string name="y">Yolk</string>
+    <string name="z">Zebra</string>
+
+
+
+
+
 </resources>
