@@ -1,20 +1,30 @@
 package com.example.learnalphabet;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Arrays;
 import java.util.Random;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 public class TestActivity extends AppCompatActivity {
     private ImageView img;
+    private RadioButton r1,r2,r3,r4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         img=findViewById(R.id.imageView4);
-        String[] arr=new String[]{"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+        r1=findViewById(R.id.radioButton);
+        r2=findViewById(R.id.radioButton2);
+        r3=findViewById(R.id.radioButton3);
+        r4=findViewById(R.id.radioButton4);
+        String[] arr=new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
         Boolean[] boolarr=new Boolean[26];
+        Arrays.fill(boolarr,Boolean.FALSE);
         String[] other=new String[3];
         String correctans="";
         Random random=new Random();
@@ -28,6 +38,8 @@ public class TestActivity extends AppCompatActivity {
                 boolarr[i]=true;
             }
         }
+        r1.setText(correctans);
+
         while(true)
         {
             int randnos=random.nextInt(27);
@@ -41,6 +53,9 @@ public class TestActivity extends AppCompatActivity {
                 break;
             }
         }
+        r2.setText(other[0]);
+        r3.setText(other[1]);
+        r4.setText(other[2]);
         switch (randno){
             case 1:
                 img.setImageResource(R.drawable.apple);
