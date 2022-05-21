@@ -17,37 +17,48 @@
         android:background="@color/white"
         app:srcCompat="@drawable/img" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/learn"
         android:layout_width="135dp"
         android:layout_height="74dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="81dp"
         android:layout_marginBottom="124dp"
+        android:background="@drawable/custom_button"
         android:padding="2dp"
         android:text="Learn"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/test"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/test"
         android:layout_width="135dp"
         android:layout_height="74dp"
         android:layout_marginStart="68dp"
         android:layout_marginBottom="124dp"
-        android:backgroundTint="@color/black"
+        android:background="@drawable/custom_button"
         android:padding="2dp"
         android:text="Test"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/learn" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/repo"
         android:layout_width="135dp"
         android:layout_height="74dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_button"
         android:text="Repo"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
