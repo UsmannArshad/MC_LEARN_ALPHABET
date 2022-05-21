@@ -39,7 +39,7 @@ public class TestActivity extends AppCompatActivity {
         String[] arr=new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
         Boolean[] boolarr=new Boolean[26];
         Arrays.fill(boolarr,Boolean.FALSE);
-        String[] other=new String[3];
+        String[] other=new String[4];
         Random random=new Random();
         int index=0;
         int randno=random.nextInt(26)+1;
@@ -51,17 +51,19 @@ public class TestActivity extends AppCompatActivity {
                 boolarr[i]=true;
             }
         }
-        r1.setText(correctans);
-
+        int randindex=random.nextInt(4);
+        other[randindex]=correctans;
         while(true)
         {
             int randnos=random.nextInt(27);
             if(boolarr[randnos-1]==false)
             {
-                other[index]=arr[randnos-1];
+                if(other[index]==null) {
+                    other[index] = arr[randnos - 1];
+                }
                 index++;
             }
-            if(index==3)
+            if(index==4)
             {
                 break;
             }
@@ -69,6 +71,7 @@ public class TestActivity extends AppCompatActivity {
         r2.setText(other[0]);
         r3.setText(other[1]);
         r4.setText(other[2]);
+        r1.setText(other[3]);
         switch (randno){
             case 1:
                 img.setImageResource(R.drawable.apple);

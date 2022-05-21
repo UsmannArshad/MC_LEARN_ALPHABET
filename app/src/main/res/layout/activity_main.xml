@@ -22,45 +22,60 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="A" />
+                android:text="A"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button29"
-                android:onClick="AlphabetClicked"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="B" />
+                android:background="@drawable/custom_alphabets"
+                android:onClick="AlphabetClicked"
+                android:text="B"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="C" />
+                android:text="C"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="D" />
+                android:text="D"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button26"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="E" />
+                android:text="E"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -68,45 +83,60 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button25"
-                android:onClick="AlphabetClicked"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="F" />
+                android:background="@drawable/custom_alphabets"
+                android:onClick="AlphabetClicked"
+                android:text="F"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button24"
                 android:layout_width="wrap_content"
-                android:onClick="AlphabetClicked"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="G" />
+                android:background="@drawable/custom_alphabets"
+                android:onClick="AlphabetClicked"
+                android:text="G"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="H" />
+                android:text="H"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="I" />
+                android:text="I"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="AlphabetClicked"
                 android:layout_weight="1"
-                android:text="J" />
+                android:background="@drawable/custom_alphabets"
+                android:onClick="AlphabetClicked"
+                android:text="J"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -114,45 +144,60 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="K" />
+                android:text="K"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="AlphabetClicked"
                 android:layout_weight="1"
-                android:text="L" />
+                android:background="@drawable/custom_alphabets"
+                android:onClick="AlphabetClicked"
+                android:text="L"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="AlphabetClicked"
                 android:layout_weight="1"
-                android:text="M" />
+                android:background="@drawable/custom_alphabets"
+                android:onClick="AlphabetClicked"
+                android:text="M"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="N" />
+                android:text="N"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="O" />
+                android:text="O"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -160,45 +205,60 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="P" />
+                android:text="P"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="Q" />
+                android:text="Q"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="R" />
+                android:text="R"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="S" />
+                android:text="S"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/custom_alphabets"
                 android:onClick="AlphabetClicked"
-                android:text="T" />
+                android:text="T"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -206,44 +266,55 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button9"
                 android:layout_width="wrap_content"
-                android:onClick="AlphabetClicked"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="U" />
+                android:background="@drawable/custom_alphabets"
+                android:onClick="AlphabetClicked"
+                android:text="U"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="AlphabetClicked"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/custom_alphabets"
                 android:layout_weight="1"
                 android:text="V" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="AlphabetClicked"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/custom_alphabets"
                 android:text="W" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="AlphabetClicked"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/custom_alphabets"
                 android:text="X" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="#FFFFFF"
                 android:onClick="AlphabetClicked"
+                android:background="@drawable/custom_alphabets"
                 android:text="Y" />
         </LinearLayout>
 
@@ -252,12 +323,14 @@
             android:layout_height="61dp"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
                 android:layout_weight="1"
                 android:onClick="AlphabetClicked"
+                android:background="@drawable/custom_alphabets"
                 android:text="Z" />
         </LinearLayout>
     </LinearLayout>
