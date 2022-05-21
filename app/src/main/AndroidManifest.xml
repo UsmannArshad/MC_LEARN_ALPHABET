@@ -11,11 +11,12 @@
         android:theme="@style/Theme.LearnAlphabet">
         <activity
             android:name=".ResultActivity"
+            android:parentActivityName=".MainPage"
             android:exported="false" />
         <activity
             android:name=".TestActivity"
             android:exported="false"
-            android:parentActivityName=".MainPage" />
+            android:parentActivityName=".ResultActivity" />
         <activity
             android:name=".MainPage"
             android:exported="true">

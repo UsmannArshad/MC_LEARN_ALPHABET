@@ -25,6 +25,5 @@ public class ResultActivity extends AppCompatActivity {
         t1.setText("Question Asked:"+Integer.toString(total_int));
         t2.setText("Correct Answer:"+Integer.toString(correct_int));
         t3.setText("Wrong Answers:"+Integer.toString(wrong_int));
-
     }
 }

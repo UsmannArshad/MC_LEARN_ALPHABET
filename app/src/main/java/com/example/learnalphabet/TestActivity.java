@@ -42,7 +42,7 @@ public class TestActivity extends AppCompatActivity {
         String[] other=new String[3];
         Random random=new Random();
         int index=0;
-        int randno=random.nextInt(27)+1;
+        int randno=random.nextInt(26)+1;
         for(int i=0;i<26;i++)
         {
             if(i==randno-1)
@@ -152,11 +152,12 @@ public class TestActivity extends AppCompatActivity {
        nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent1=new Intent(TestActivity.this,TestActivity.class);
-            intent1.putExtra("score",correct_count);
-            intent1.putExtra("wrong",wrong_count);
-            startActivity(intent1);
-            }
+                    Intent intent1 = new Intent(TestActivity.this, TestActivity.class);
+                    intent1.putExtra("score", correct_count);
+                    intent1.putExtra("wrong", wrong_count);
+                    startActivity(intent1);
+                    finish();
+                }
         });
         resultbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,6 +166,7 @@ public class TestActivity extends AppCompatActivity {
                 intent.putExtra("correct",correct_count);
                 intent.putExtra("wrong",wrong_count);
                 startActivity(intent);
+                finish();
             }
         });
     }
