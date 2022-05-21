@@ -22,6 +22,7 @@ public class TestActivity extends AppCompatActivity {
     public String correctans;
     public static double correct_count;
     public static double wrong_count;
+    public static boolean check;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,7 @@ public class TestActivity extends AppCompatActivity {
         other[randindex]=correctans;
         while(true)
         {
-            int randnos=random.nextInt(27);
+            int randnos=random.nextInt(26)+1;
             if(boolarr[randnos-1]==false)
             {
                 if(other[index]==null) {
