@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 import java.util.Random;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,29 +13,35 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class TestActivity extends AppCompatActivity {
     private ImageView img;
     private RadioButton r1,r2,r3,r4;
-    private Button submitbtn;
+    private Button nextbtn,resultbtn;
     public String correctans;
-    public static int correct_count=0;
+    public static double correct_count;
+    public static double wrong_count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+       Intent intent=getIntent();
+       correct_count=intent.getDoubleExtra("score",correct_count);
+       wrong_count=intent.getDoubleExtra("wrong",wrong_count);
         img=findViewById(R.id.imageView4);
         r1=findViewById(R.id.radioButton);
         r2=findViewById(R.id.radioButton2);
         r3=findViewById(R.id.radioButton3);
         r4=findViewById(R.id.radioButton4);
+        nextbtn=findViewById(R.id.submit);
         String[] arr=new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
         Boolean[] boolarr=new Boolean[26];
         Arrays.fill(boolarr,Boolean.FALSE);
         String[] other=new String[3];
         Random random=new Random();
         int index=0;
-        int randno=random.nextInt(27);
+        int randno=random.nextInt(27)+1;
         for(int i=0;i<26;i++)
         {
             if(i==randno-1)
@@ -141,12 +148,21 @@ public class TestActivity extends AppCompatActivity {
                 img.setImageResource(R.drawable.zebra);
                 break;
         }
-//        submitbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+       nextbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Intent intent1=new Intent(TestActivity.this,TestActivity.class);
+            intent1.putExtra("score",correct_count);
+            intent1.putExtra("wrong",wrong_count);
+            startActivity(intent1);
+            }
+        });
+        resultbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(TestActivity.this,)
+            }
+        });
     }
     public void RadioClicked(View v)
     {
@@ -178,10 +194,12 @@ public class TestActivity extends AppCompatActivity {
         r4.setEnabled(false);
         if(correctans==clickedans){
             clicked.setBackgroundColor(Color.GREEN);
+            correct_count++;
         }
         else
         {
             clicked.setBackgroundColor(Color.RED);
+            wrong_count++;
         }
     }
 }

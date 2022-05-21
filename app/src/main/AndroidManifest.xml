@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnAlphabet">
         <activity
-            android:name=".TestActivity"
-            android:parentActivityName=".MainPage"
+            android:name=".ResultActivity"
             android:exported="false" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="false"
+            android:parentActivityName=".MainPage" />
         <activity
             android:name=".MainPage"
             android:exported="true">
@@ -28,8 +31,8 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
-            android:parentActivityName=".MainPage"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".MainPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
