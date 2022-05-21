@@ -35,6 +35,7 @@ public class TestActivity extends AppCompatActivity {
         r3=findViewById(R.id.radioButton3);
         r4=findViewById(R.id.radioButton4);
         nextbtn=findViewById(R.id.submit);
+        resultbtn=findViewById(R.id.Result);
         String[] arr=new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
         Boolean[] boolarr=new Boolean[26];
         Arrays.fill(boolarr,Boolean.FALSE);
@@ -160,7 +161,10 @@ public class TestActivity extends AppCompatActivity {
         resultbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(TestActivity.this,)
+                Intent intent=new Intent(TestActivity.this,ResultActivity.class);
+                intent.putExtra("correct",correct_count);
+                intent.putExtra("wrong",wrong_count);
+                startActivity(intent);
             }
         });
     }
