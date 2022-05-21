@@ -22,7 +22,7 @@ public class TestActivity extends AppCompatActivity {
     public String correctans;
     public static double correct_count;
     public static double wrong_count;
-    public static boolean check;
+    public static boolean check=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,11 +156,13 @@ public class TestActivity extends AppCompatActivity {
        nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(check==true) {
                     Intent intent1 = new Intent(TestActivity.this, TestActivity.class);
                     intent1.putExtra("score", correct_count);
                     intent1.putExtra("wrong", wrong_count);
                     startActivity(intent1);
                     finish();
+                }
                 }
         });
         resultbtn.setOnClickListener(new View.OnClickListener() {
@@ -177,6 +179,7 @@ public class TestActivity extends AppCompatActivity {
     public void RadioClicked(View v)
     {
         String clickedans="";
+        check=true;
         RadioButton clicked=findViewById(R.id.radioButton);
         r1=findViewById(R.id.radioButton);
         r2=findViewById(R.id.radioButton2);
