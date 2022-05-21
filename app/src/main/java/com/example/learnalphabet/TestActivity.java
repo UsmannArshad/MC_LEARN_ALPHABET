@@ -5,14 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 import java.util.Random;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Button;
 
 public class TestActivity extends AppCompatActivity {
     private ImageView img;
     private RadioButton r1,r2,r3,r4;
+    private Button submitbtn;
+    public String correctans;
+    public static int correct_count=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +32,6 @@ public class TestActivity extends AppCompatActivity {
         Boolean[] boolarr=new Boolean[26];
         Arrays.fill(boolarr,Boolean.FALSE);
         String[] other=new String[3];
-        String correctans="";
         Random random=new Random();
         int index=0;
         int randno=random.nextInt(27);
@@ -135,6 +140,48 @@ public class TestActivity extends AppCompatActivity {
             case 26:
                 img.setImageResource(R.drawable.zebra);
                 break;
+        }
+//        submitbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+    }
+    public void RadioClicked(View v)
+    {
+        String clickedans="";
+        RadioButton clicked=findViewById(R.id.radioButton);
+        r1=findViewById(R.id.radioButton);
+        r2=findViewById(R.id.radioButton2);
+        r3=findViewById(R.id.radioButton3);
+        r4=findViewById(R.id.radioButton4);
+        switch(v.getId())
+        {
+            case R.id.radioButton:
+                clicked=findViewById(R.id.radioButton);
+                break;
+            case R.id.radioButton2:
+                clicked=findViewById(R.id.radioButton2);
+                break;
+            case R.id.radioButton3:
+                clicked=findViewById(R.id.radioButton3);
+                break;
+            case R.id.radioButton4:
+                clicked=findViewById(R.id.radioButton4);
+                break;
+        }
+        clickedans=clicked.getText().toString();
+        r1.setEnabled(false);
+        r2.setEnabled(false);
+        r3.setEnabled(false);
+        r4.setEnabled(false);
+        if(correctans==clickedans){
+            clicked.setBackgroundColor(Color.GREEN);
+        }
+        else
+        {
+            clicked.setBackgroundColor(Color.RED);
         }
     }
 }
