@@ -1,5 +1,6 @@
 package com.example.learnalphabet;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
@@ -16,10 +17,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class TestActivity extends AppCompatActivity {
-    private ImageView img;
+    public ImageView img;
     private RadioButton r1,r2,r3,r4;
     private Button nextbtn,resultbtn;
     public String correctans;
+    public String[] other=new String[4];
+    public int randomimg;
     public static double correct_count;
     public static double wrong_count;
     public static boolean check=false;
@@ -37,43 +40,99 @@ public class TestActivity extends AppCompatActivity {
         r4=findViewById(R.id.radioButton4);
         nextbtn=findViewById(R.id.submit);
         resultbtn=findViewById(R.id.Result);
+        Random random=new Random();
         String[] arr=new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
         Boolean[] boolarr=new Boolean[26];
         Arrays.fill(boolarr,Boolean.FALSE);
-        String[] other=new String[4];
-        Random random=new Random();
-        int index=0;
-        int randno=random.nextInt(26)+1;
-        for(int i=0;i<26;i++)
+        //String[] other=new String[4];
+        if(savedInstanceState==null)
         {
-            if(i==randno-1)
+            randomimg=random.nextInt(26)+1;
+            int index=0;
+            for(int i=0;i<26;i++)
             {
-                correctans=arr[i];
-                boolarr[i]=true;
-            }
-        }
-        int randindex=random.nextInt(4);
-        other[randindex]=correctans;
-        while(true)
-        {
-            int randnos=random.nextInt(26)+1;
-            if(boolarr[randnos-1]==false)
-            {
-                if(other[index]==null) {
-                    other[index] = arr[randnos - 1];
+                if(i==randomimg-1)
+                {
+                    correctans=arr[i];
+                    boolarr[i]=true;
                 }
-                index++;
             }
-            if(index==4)
+            int randindex=random.nextInt(4);
+            other[randindex]=correctans;
+            while(true)
             {
-                break;
+                int randnos=random.nextInt(26)+1;
+                if(boolarr[randnos-1]==false)
+                {
+                    if(other[index]==null) {
+                        other[index] = arr[randnos - 1];
+                    }
+                    index++;
+                }
+                if(index==4)
+                {
+                    break;
+                }
             }
         }
+        ImageViewer(randomimg);
         r2.setText(other[0]);
         r3.setText(other[1]);
         r4.setText(other[2]);
         r1.setText(other[3]);
-        switch (randno){
+       nextbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (check == true) {
+                    Intent intent1 = new Intent(TestActivity.this, TestActivity.class);
+                    intent1.putExtra("score", correct_count);
+                    intent1.putExtra("wrong", wrong_count);
+                    startActivity(intent1);
+                    finish();
+                }
+            }
+        });
+        resultbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(TestActivity.this,ResultActivity.class);
+                intent.putExtra("correct",correct_count);
+                intent.putExtra("wrong",wrong_count);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+    }
+    @Override
+    public void onSaveInstanceState(@Nullable Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("imgstring", randomimg);
+        savedInstanceState.putString("correctans",correctans);
+        savedInstanceState.putString("first",other[0]);
+        savedInstanceState.putString("second",other[1]);
+        savedInstanceState.putString("third",other[2]);
+        savedInstanceState.putString("fourth",other[3]);
+
+    }
+    @Override
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        randomimg = savedInstanceState.getInt("imgstring");
+        correctans=savedInstanceState.getString("correctans");
+        ImageViewer(randomimg);
+        other[0]=savedInstanceState.getString("first");
+        other[1]=savedInstanceState.getString("second");
+        other[2]=savedInstanceState.getString("third");
+        other[3]=savedInstanceState.getString("fourth");
+        r2.setText(other[0]);
+        r3.setText(other[1]);
+        r4.setText(other[2]);
+        r1.setText(other[3]);
+    }
+    public void ImageViewer(int rand)
+    {
+        switch (rand){
             case 1:
                 img.setImageResource(R.drawable.apple);
                 break;
@@ -153,28 +212,6 @@ public class TestActivity extends AppCompatActivity {
                 img.setImageResource(R.drawable.zebra);
                 break;
         }
-       nextbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(check==true) {
-                    Intent intent1 = new Intent(TestActivity.this, TestActivity.class);
-                    intent1.putExtra("score", correct_count);
-                    intent1.putExtra("wrong", wrong_count);
-                    startActivity(intent1);
-                    finish();
-                }
-                }
-        });
-        resultbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(TestActivity.this,ResultActivity.class);
-                intent.putExtra("correct",correct_count);
-                intent.putExtra("wrong",wrong_count);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
     public void RadioClicked(View v)
     {
