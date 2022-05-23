@@ -25,7 +25,9 @@ public class TestActivity extends AppCompatActivity {
     public int randomimg;
     public static double correct_count;
     public static double wrong_count;
-    public static boolean check=false;
+    public boolean check=false;
+    public int clicked;
+    public String clickedans;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +47,6 @@ public class TestActivity extends AppCompatActivity {
         Boolean[] boolarr=new Boolean[26];
         Arrays.fill(boolarr,Boolean.FALSE);
         //String[] other=new String[4];
-        if(savedInstanceState==null)
-        {
             randomimg=random.nextInt(26)+1;
             int index=0;
             for(int i=0;i<26;i++)
@@ -74,7 +74,6 @@ public class TestActivity extends AppCompatActivity {
                     break;
                 }
             }
-        }
         ImageViewer(randomimg);
         r2.setText(other[0]);
         r3.setText(other[1]);
@@ -113,6 +112,7 @@ public class TestActivity extends AppCompatActivity {
         savedInstanceState.putString("second",other[1]);
         savedInstanceState.putString("third",other[2]);
         savedInstanceState.putString("fourth",other[3]);
+        savedInstanceState.putInt("clickedid",clicked);
 
     }
     @Override
@@ -129,6 +129,8 @@ public class TestActivity extends AppCompatActivity {
         r3.setText(other[1]);
         r4.setText(other[2]);
         r1.setText(other[3]);
+        int a=savedInstanceState.getInt("clickedid");
+        HighlightAnswer(a);
     }
     public void ImageViewer(int rand)
     {
@@ -215,41 +217,44 @@ public class TestActivity extends AppCompatActivity {
     }
     public void RadioClicked(View v)
     {
-        String clickedans="";
         check=true;
-        RadioButton clicked=findViewById(R.id.radioButton);
-        r1=findViewById(R.id.radioButton);
-        r2=findViewById(R.id.radioButton2);
-        r3=findViewById(R.id.radioButton3);
-        r4=findViewById(R.id.radioButton4);
-        switch(v.getId())
-        {
-            case R.id.radioButton:
-                clicked=findViewById(R.id.radioButton);
-                break;
-            case R.id.radioButton2:
-                clicked=findViewById(R.id.radioButton2);
-                break;
-            case R.id.radioButton3:
-                clicked=findViewById(R.id.radioButton3);
-                break;
-            case R.id.radioButton4:
-                clicked=findViewById(R.id.radioButton4);
-                break;
-        }
-        clickedans=clicked.getText().toString();
-        r1.setEnabled(false);
-        r2.setEnabled(false);
-        r3.setEnabled(false);
-        r4.setEnabled(false);
-        if(correctans==clickedans){
-            clicked.setBackgroundColor(Color.GREEN);
-            correct_count++;
-        }
-        else
-        {
-            clicked.setBackgroundColor(Color.RED);
-            wrong_count++;
+        clicked=v.getId();
+        HighlightAnswer(clicked);
+    }
+    public void HighlightAnswer(int a) {
+        if (a != 0) {
+            check=true;
+            RadioButton clicked1 = findViewById(R.id.radioButton);
+            r1 = findViewById(R.id.radioButton);
+            r2 = findViewById(R.id.radioButton2);
+            r3 = findViewById(R.id.radioButton3);
+            r4 = findViewById(R.id.radioButton4);
+            switch (a) {
+                case R.id.radioButton:
+                    clicked1 = findViewById(R.id.radioButton);
+                    break;
+                case R.id.radioButton2:
+                    clicked1 = findViewById(R.id.radioButton2);
+                    break;
+                case R.id.radioButton3:
+                    clicked1 = findViewById(R.id.radioButton3);
+                    break;
+                case R.id.radioButton4:
+                    clicked1 = findViewById(R.id.radioButton4);
+                    break;
+            }
+            clickedans = clicked1.getText().toString();
+            r1.setEnabled(false);
+            r2.setEnabled(false);
+            r3.setEnabled(false);
+            r4.setEnabled(false);
+            if (correctans == clickedans) {
+                clicked1.setBackgroundColor(Color.GREEN);
+                correct_count++;
+            } else {
+                clicked1.setBackgroundColor(Color.RED);
+                wrong_count++;
+            }
         }
     }
 }
