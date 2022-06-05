@@ -18,7 +18,6 @@ public class MainPage extends AppCompatActivity {
         learnbutton=findViewById(R.id.learn);
         testbutton=findViewById(R.id.test);
         repobutton=findViewById(R.id.repo);
-        checkbutton=findViewById(R.id.check);
         learnbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,13 +31,6 @@ public class MainPage extends AppCompatActivity {
                 Intent intent=new Intent(MainPage.this,TestActivity.class);
                 intent.putExtra("score",0.0);
                 intent.putExtra("wrong",0.0);
-                startActivity(intent);
-            }
-        });
-        checkbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainPage.this,ListOfImage.class);
                 startActivity(intent);
             }
         });
