@@ -25,9 +25,7 @@ public ListAdaptor(@NonNull Context context,int resource,@NonNull ArrayList<Alha
         AlhabetInfo info = getItem(position);
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_layout, parent, false);
         ImageView imageView = convertView.findViewById(R.id.imageView7);
-        TextView imageName = convertView.findViewById(R.id.textView5);
         imageView.setImageResource(info.getImageid());
-        imageName.setText(info.getName().toString());
         return convertView;
     }
 }
