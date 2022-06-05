@@ -15,15 +15,15 @@ import java.util.ArrayList;
 public class ListAdaptor_Test extends ArrayAdapter<AlhabetInfo> {
     public ListAdaptor_Test(@NonNull Context context, int resource, @NonNull ArrayList<AlhabetInfo> arr)
     {
-        super(context,R.layout.activity_test2,resource,arr);
+        super(context,R.layout.testlist_layout,resource,arr);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         AlhabetInfo info = getItem(position);
-        convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_layout, parent, false);
-        ImageView imageView = convertView.findViewById(R.id.imageView7);
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.testlist_layout, parent, false);
+        ImageView imageView = convertView.findViewById(R.id.imageView8);
         imageView.setImageResource(info.getImageid());
         return convertView;
     }

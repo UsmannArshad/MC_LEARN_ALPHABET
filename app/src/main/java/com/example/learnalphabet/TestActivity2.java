@@ -18,7 +18,6 @@ public class TestActivity2 extends AppCompatActivity {
         arrayList.add(new AlhabetInfo("Alligator", R.drawable.aligator));
         arrayList.add(new AlhabetInfo("Aeroplane",R.drawable.aeroplane));
         arrayList.add(new AlhabetInfo("Ant",R.drawable.ant));
-        arrayList.add(new AlhabetInfo("Axe",R.drawable.axe));
 
         ListView listView=findViewById(R.id.listview1);
         ListAdaptor_Test adaptor=new ListAdaptor_Test(this,0,arrayList);
