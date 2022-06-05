@@ -28,7 +28,7 @@ public class MainPage extends AppCompatActivity {
         testbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainPage.this,TestActivity.class);
+                Intent intent=new Intent(MainPage.this,TestActivity2.class);
                 intent.putExtra("score",0.0);
                 intent.putExtra("wrong",0.0);
                 startActivity(intent);

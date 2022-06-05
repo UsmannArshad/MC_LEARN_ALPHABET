@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnAlphabet">
         <activity
+            android:name=".TestActivity2"
+            android:exported="false" />
+        <activity
             android:name=".ListOfImage"
             android:exported="false" />
         <activity
@@ -36,7 +39,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:parentActivityName=".MainPage"></activity>
+            android:parentActivityName=".MainPage" />
     </application>
 
 </manifest>
