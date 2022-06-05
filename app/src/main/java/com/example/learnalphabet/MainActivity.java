@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity{
                 clickedbtn=findViewById(R.id.button);
                 break;
         }
-        Intent intent=new Intent(MainActivity.this,Images.class);
+        Intent intent=new Intent(MainActivity.this,ListOfImage.class);
         intent.putExtra("Alphabet",clickedbtn.getText().toString());
         startActivity(intent);
     }
