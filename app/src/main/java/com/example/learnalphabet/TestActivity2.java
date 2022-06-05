@@ -1,8 +1,12 @@
 package com.example.learnalphabet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.TypedArrayUtils;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -10,10 +14,12 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 public class TestActivity2 extends AppCompatActivity {
 int image_id=0;
+String correct_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +53,13 @@ int image_id=0;
         int[] letter_z={R.drawable.zebra,R.drawable.zero,R.drawable.zigzag,R.drawable.zip,R.drawable.zoo};
         Random random=new Random();
         int i=0;
+        Boolean check=false;
         int[] selected_imgs=new int[4];
+        String[] selected_names=new String[4];
         while (i!=4) {
             int random_letter = random.nextInt(27);
             int random_index = random.nextInt(5);
+            check=false;
             switch (random_letter) {
                 case 1:
                     image_id = letter_a[random_index];
@@ -131,17 +140,41 @@ int image_id=0;
                     image_id = letter_z[random_index];
                     break;
             }
-            arrayList.add(new AlhabetInfo("Apple",image_id));
-            selected_imgs[i]=image_id;
-            i++;
+            for(int j=0;j<selected_imgs.length-1;j++)
+            {
+                if(image_id==selected_imgs[j])
+                {
+                    check=true;
+                }
+            }
+            if(check==false) {
+                String selected_name = getResources().getResourceEntryName(image_id);
+                selected_imgs[i] = image_id;
+                selected_names[i]=selected_name;
+                arrayList.add(new AlhabetInfo(selected_name, image_id));
+                i++;
+            }
         }
         int asked_img_no=random.nextInt(4);
-        String correct_name = getResources().getResourceEntryName(selected_imgs[asked_img_no]);
+        correct_name = selected_names[asked_img_no];
         correct_name = correct_name.substring(0, 1).toUpperCase() + correct_name.substring(1).toLowerCase();
         TextView textView=findViewById(R.id.textView5);
         textView.setText("Which of the following is "+correct_name+" ?");
         ListView listView=findViewById(R.id.listview1);
         ListAdaptor_Test adaptor=new ListAdaptor_Test(this,0,arrayList);
         listView.setAdapter(adaptor);
+       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(arrayList.get(i).name.equals(correct_name.toLowerCase()))
+                {
+                    Toast.makeText(TestActivity2.this,"heavy", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(TestActivity2.this,"False", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
