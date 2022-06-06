@@ -1,9 +1,11 @@
 package com.example.learnalphabet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.TypedArrayUtils;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -166,14 +168,36 @@ String correct_name;
        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                boolean iscorrect=true;
                 if(arrayList.get(i).name.equals(correct_name.toLowerCase()))
                 {
-                    Toast.makeText(TestActivity2.this,"heavy", Toast.LENGTH_SHORT).show();
+                    iscorrect=true;
                 }
                 else
                 {
-                    Toast.makeText(TestActivity2.this,"False", Toast.LENGTH_SHORT).show();
+                    iscorrect=false;
                 }
+                for(int k=(arrayList.size())-1;k>=0;k--)
+                {
+                    if(k!=i)
+                    {
+                        arrayList.remove(k);
+                        adaptor.notifyDataSetChanged();
+                    }
+                }
+                if(iscorrect==true)
+                {
+                    adapterView.setBackgroundColor(Color.GREEN);
+                }
+                else
+                {
+                    adapterView.setBackgroundColor(Color.RED);
+                }
+                ConstraintLayout.LayoutParams params=(ConstraintLayout.LayoutParams)adapterView.getLayoutParams();
+                params.width=1100;
+                params.height=340;
+                params.bottomMargin=1500;
+                adapterView.setLayoutParams(params);
             }
         });
     }
