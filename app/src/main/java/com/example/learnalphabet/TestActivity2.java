@@ -7,6 +7,7 @@ import androidx.core.content.res.TypedArrayUtils;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -18,14 +19,29 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
+import android.widget.Button;
 
 public class TestActivity2 extends AppCompatActivity {
 int image_id=0;
 String correct_name;
+public int correct_count=0;
+public int wrong_count=0;
+public String correct_count_str;
+public String wrong_count_str;
+public Button nextbtn,exitbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test2);
+        Intent intent=getIntent();
+        Bundle extras=intent.getExtras();
+        Log.d("check","nice");
+        correct_count_str=extras.getString("score","");
+        wrong_count_str=extras.getString("wrong","");
+        Log.d("correct",correct_count_str);
+        Log.d("wrong",wrong_count_str);
+        correct_count=Integer.parseInt(correct_count_str);
+        wrong_count=Integer.parseInt(wrong_count_str);
         ArrayList<AlhabetInfo> arrayList=new ArrayList<>();
         int[] letter_a={R.drawable.apple,R.drawable.aeroplane,R.drawable.ant,R.drawable.axe,R.drawable.aligator};
         int[] letter_b={R.drawable.ball,R.drawable.banana,R.drawable.boat,R.drawable.boy,R.drawable.butterfly};
@@ -53,6 +69,8 @@ String correct_name;
         int[] letter_x={R.drawable.xerox,R.drawable.xmax,R.drawable.xray,R.drawable.xylophone,R.drawable.axe};
         int[] letter_y={R.drawable.yak,R.drawable.yarn,R.drawable.yoga,R.drawable.yolk,R.drawable.yoyo};
         int[] letter_z={R.drawable.zebra,R.drawable.zero,R.drawable.zigzag,R.drawable.zip,R.drawable.zoo};
+        nextbtn=findViewById(R.id.button2);
+        exitbtn=findViewById(R.id.button3);
         Random random=new Random();
         int i=0;
         Boolean check=false;
@@ -187,10 +205,12 @@ String correct_name;
                 }
                 if(iscorrect==true)
                 {
+                    correct_count++;
                     adapterView.setBackgroundColor(Color.GREEN);
                 }
                 else
                 {
+                    wrong_count++;
                     adapterView.setBackgroundColor(Color.RED);
                 }
                 ConstraintLayout.LayoutParams params=(ConstraintLayout.LayoutParams)adapterView.getLayoutParams();
@@ -200,5 +220,25 @@ String correct_name;
                 adapterView.setLayoutParams(params);
             }
         });
+    nextbtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent=new Intent(TestActivity2.this,TestActivity2.class);
+            intent.putExtra("score",Integer.toString(correct_count));
+            intent.putExtra("wrong",Integer.toString(wrong_count));
+            startActivity(intent);
+            finish();
+        }
+    });
+    exitbtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent =new Intent(TestActivity2.this,ResultActivity.class);
+            intent.putExtra("score",Integer.toString(correct_count));
+            intent.putExtra("wrong",Integer.toString(wrong_count));
+            startActivity(intent);
+            finish();
+        }
+    });
     }
 }
