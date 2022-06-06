@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnAlphabet">
         <activity
+            android:name=".TestSelectActivity"
+            android:exported="false" />
+        <activity
             android:name=".TestActivity2"
             android:exported="false" />
         <activity
