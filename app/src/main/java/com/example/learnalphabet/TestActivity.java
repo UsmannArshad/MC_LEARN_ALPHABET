@@ -20,7 +20,7 @@ public class TestActivity extends AppCompatActivity {
     public ImageView img;
     private RadioButton r1,r2,r3,r4;
     private Button nextbtn,resultbtn;
-    public String correctans;
+    public String correct_name;
     public String[] other=new String[4];
     public int randomimg;
     public int  correct_count;
@@ -179,13 +179,76 @@ public class TestActivity extends AppCompatActivity {
             }
         }
         int asked_img_no=random.nextInt(4);
-        String correct_name = selected_names[asked_img_no];
+        correct_name = selected_names[asked_img_no];
         int asked_img=selected_imgs[asked_img_no];
         img.setImageResource(asked_img);
         r1.setText(selected_names[0]);
         r2.setText(selected_names[1]);
         r3.setText(selected_names[2]);
         r4.setText(selected_names[3]);
-
+        nextbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (check1 == true) {
+                    Intent intent1 = new Intent(TestActivity.this, TestActivity.class);
+                    intent1.putExtra("score", Integer.toString(correct_count));
+                    intent1.putExtra("wrong", Integer.toString(wrong_count));
+                    startActivity(intent1);
+                    finish();
+                }
+            }
+        });
+        resultbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(TestActivity.this,ResultActivity.class);
+                intent.putExtra("score", Integer.toString(correct_count));
+                intent.putExtra("wrong", Integer.toString(wrong_count));
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void RadioClicked(View v)
+    {
+        check1=true;
+        clicked=v.getId();
+        HighlightAnswer(clicked);
+    }
+    public void HighlightAnswer(int a) {
+        if (a != 0) {
+            check1 = true;
+            RadioButton clicked1 = findViewById(R.id.radioButton);
+            r1 = findViewById(R.id.radioButton);
+            r2 = findViewById(R.id.radioButton2);
+            r3 = findViewById(R.id.radioButton3);
+            r4 = findViewById(R.id.radioButton4);
+            switch (a) {
+                case R.id.radioButton:
+                    clicked1 = findViewById(R.id.radioButton);
+                    break;
+                case R.id.radioButton2:
+                    clicked1 = findViewById(R.id.radioButton2);
+                    break;
+                case R.id.radioButton3:
+                    clicked1 = findViewById(R.id.radioButton3);
+                    break;
+                case R.id.radioButton4:
+                    clicked1 = findViewById(R.id.radioButton4);
+                    break;
+            }
+            clickedans = clicked1.getText().toString();
+            r1.setEnabled(false);
+            r2.setEnabled(false);
+            r3.setEnabled(false);
+            r4.setEnabled(false);
+            if (correct_name == clickedans) {
+                clicked1.setBackgroundColor(Color.GREEN);
+                correct_count++;
+            } else {
+                clicked1.setBackgroundColor(Color.RED);
+                wrong_count++;
+            }
+        }
     }
 }
