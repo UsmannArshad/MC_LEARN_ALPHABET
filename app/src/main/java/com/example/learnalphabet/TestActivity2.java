@@ -2,22 +2,16 @@ package com.example.learnalphabet;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.res.TypedArrayUtils;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Random;
 import android.widget.Button;
 
@@ -29,6 +23,7 @@ public int wrong_count=0;
 public String correct_count_str;
 public String wrong_count_str;
 public Button nextbtn,exitbtn;
+public Boolean isclicked=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +61,8 @@ public Button nextbtn,exitbtn;
         int[] letter_x={R.drawable.xerox,R.drawable.xmax,R.drawable.xray,R.drawable.xylophone,R.drawable.axe};
         int[] letter_y={R.drawable.yak,R.drawable.yarn,R.drawable.yoga,R.drawable.yolk,R.drawable.yoyo};
         int[] letter_z={R.drawable.zebra,R.drawable.zero,R.drawable.zigzag,R.drawable.zip,R.drawable.zoo};
-        nextbtn=findViewById(R.id.button2);
-        exitbtn=findViewById(R.id.button3);
+        nextbtn=findViewById(R.id.button3);
+        exitbtn=findViewById(R.id.exitbtn);
         Random random=new Random();
         int i=0;
         Boolean check=false;
@@ -183,6 +178,7 @@ public Button nextbtn,exitbtn;
        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                isclicked=true;
                 boolean iscorrect=true;
                 if(arrayList.get(i).name.equals(correct_name.toLowerCase()))
                 {
@@ -220,21 +216,23 @@ public Button nextbtn,exitbtn;
     nextbtn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent=new Intent(TestActivity2.this,TestActivity2.class);
-            intent.putExtra("score",Integer.toString(correct_count));
-            intent.putExtra("wrong",Integer.toString(wrong_count));
-            startActivity(intent);
-            finish();
+            if(isclicked==true) {
+                Intent intent = new Intent(TestActivity2.this, TestActivity2.class);
+                intent.putExtra("score", Integer.toString(correct_count));
+                intent.putExtra("wrong", Integer.toString(wrong_count));
+                startActivity(intent);
+                finish();
+            }
         }
     });
     exitbtn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent =new Intent(TestActivity2.this,ResultActivity.class);
-            intent.putExtra("score",Integer.toString(correct_count));
-            intent.putExtra("wrong",Integer.toString(wrong_count));
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(TestActivity2.this, ResultActivity.class);
+                intent.putExtra("score", Integer.toString(correct_count));
+                intent.putExtra("wrong", Integer.toString(wrong_count));
+                startActivity(intent);
+                finish();
         }
     });
     }
