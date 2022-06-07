@@ -9,11 +9,10 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="403dp"
-        android:layout_height="470dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,24 +22,22 @@
         android:id="@+id/button4"
         android:layout_width="135dp"
         android:layout_height="74dp"
-        android:layout_marginStart="158dp"
-        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="43dp"
         android:background="@drawable/custom_button"
         android:text="Test 1"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button5"
         android:layout_width="135dp"
         android:layout_height="74dp"
-        android:layout_marginStart="159dp"
-        android:layout_marginEnd="158dp"
+        android:layout_marginBottom="43dp"
         android:background="@drawable/custom_button"
         android:text="Test 2"
         android:textColor="#FFFFFF"
@@ -48,6 +45,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
