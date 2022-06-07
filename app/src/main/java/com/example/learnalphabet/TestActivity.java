@@ -22,7 +22,7 @@ public class TestActivity extends AppCompatActivity {
     private Button nextbtn,resultbtn;
     public String correct_name;
     public String[] other=new String[4];
-    public int randomimg;
+    public int asked_img;
     public int  correct_count;
     public int wrong_count;
     public String correct_count_str;
@@ -30,6 +30,7 @@ public class TestActivity extends AppCompatActivity {
     public boolean check1=false;
     public int clicked;
     public String clickedans;
+    String[] selected_names=new String[4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +79,6 @@ public class TestActivity extends AppCompatActivity {
         Boolean check=false;
         int[] selected_imgs=new int[4];
         int image_id=0;
-        String[] selected_names=new String[4];
         while (i!=4) {
             int random_letter = random.nextInt(27);
             int random_index = random.nextInt(5);
@@ -180,7 +180,7 @@ public class TestActivity extends AppCompatActivity {
         }
         int asked_img_no=random.nextInt(4);
         correct_name = selected_names[asked_img_no];
-        int asked_img=selected_imgs[asked_img_no];
+        asked_img=selected_imgs[asked_img_no];
         img.setImageResource(asked_img);
         r1.setText(selected_names[0]);
         r2.setText(selected_names[1]);
@@ -208,6 +208,35 @@ public class TestActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    @Override
+    public void onSaveInstanceState(@Nullable Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("imgstring", asked_img);
+        savedInstanceState.putString("correctans",correct_name);
+        savedInstanceState.putString("first",selected_names[0]);
+        savedInstanceState.putString("second",selected_names[1]);
+        savedInstanceState.putString("third",selected_names[2]);
+        savedInstanceState.putString("fourth",selected_names[3]);
+        savedInstanceState.putInt("clickedid",clicked);
+
+    }
+    @Override
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        asked_img = savedInstanceState.getInt("imgstring");
+        correct_name=savedInstanceState.getString("correctans");
+        img.setImageResource(asked_img);
+        selected_names[0]=savedInstanceState.getString("first");
+        selected_names[1]=savedInstanceState.getString("second");
+        selected_names[2]=savedInstanceState.getString("third");
+        selected_names[3]=savedInstanceState.getString("fourth");
+        r1.setText(selected_names[0]);
+        r2.setText(selected_names[1]);
+        r3.setText(selected_names[2]);
+        r4.setText(selected_names[3]);
+        int a=savedInstanceState.getInt("clickedid");
+        HighlightAnswer(a);
     }
     public void RadioClicked(View v)
     {
