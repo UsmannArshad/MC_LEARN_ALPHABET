@@ -1,9 +1,11 @@
 package com.example.learnalphabet;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class TestActivity2 extends AppCompatActivity {
 int image_id=0;
@@ -24,6 +27,12 @@ public String correct_count_str;
 public String wrong_count_str;
 public Button nextbtn,exitbtn;
 public Boolean isclicked=false;
+public int[] selected_imgs=new int[4];
+public String[] selected_names=new String[4];
+public TextView textView;
+public ArrayList<AlhabetInfo> arrayList;
+public ListView listView;
+public ListAdaptor_Test adaptor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +43,7 @@ public Boolean isclicked=false;
         wrong_count_str=extras.getString("wrong","");
         correct_count=Integer.parseInt(correct_count_str);
         wrong_count=Integer.parseInt(wrong_count_str);
-        ArrayList<AlhabetInfo> arrayList=new ArrayList<>();
+        arrayList=new ArrayList<>();
         int[] letter_a={R.drawable.apple,R.drawable.aeroplane,R.drawable.ant,R.drawable.axe,R.drawable.aligator};
         int[] letter_b={R.drawable.ball,R.drawable.banana,R.drawable.boat,R.drawable.boy,R.drawable.butterfly};
         int[] letter_c={R.drawable.cake,R.drawable.cap,R.drawable.car,R.drawable.cat,R.drawable.cup};
@@ -66,8 +75,6 @@ public Boolean isclicked=false;
         Random random=new Random();
         int i=0;
         Boolean check=false;
-        int[] selected_imgs=new int[4];
-        String[] selected_names=new String[4];
         while (i!=4) {
             int random_letter = random.nextInt(27);
             int random_index = random.nextInt(5);
@@ -170,10 +177,10 @@ public Boolean isclicked=false;
         int asked_img_no=random.nextInt(4);
         correct_name = selected_names[asked_img_no];
         correct_name = correct_name.substring(0, 1).toUpperCase() + correct_name.substring(1).toLowerCase();
-        TextView textView=findViewById(R.id.textView5);
+        textView=findViewById(R.id.textView5);
         textView.setText("Which of the following is "+correct_name+" ?");
-        ListView listView=findViewById(R.id.listview1);
-        ListAdaptor_Test adaptor=new ListAdaptor_Test(this,0,arrayList);
+        listView=findViewById(R.id.listview1);
+        adaptor=new ListAdaptor_Test(this,0,arrayList);
         listView.setAdapter(adaptor);
        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -206,11 +213,21 @@ public Boolean isclicked=false;
                     wrong_count++;
                     adapterView.setBackgroundColor(Color.RED);
                 }
-                ConstraintLayout.LayoutParams params=(ConstraintLayout.LayoutParams)adapterView.getLayoutParams();
-                params.width=1100;
-                params.height=340;
-                params.bottomMargin=1500;
-                adapterView.setLayoutParams(params);
+                int orientation = getResources().getConfiguration().orientation;
+                if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    ConstraintLayout.LayoutParams params=(ConstraintLayout.LayoutParams)adapterView.getLayoutParams();
+                    params.width=1100;
+                    params.height=241;
+                    params.bottomMargin=740;
+                    adapterView.setLayoutParams(params);
+                } else {
+                    ConstraintLayout.LayoutParams params=(ConstraintLayout.LayoutParams)adapterView.getLayoutParams();
+                    params.width=1100;
+                    params.height=340;
+                    params.bottomMargin=1500;
+                    adapterView.setLayoutParams(params);
+                }
+
             }
         });
     nextbtn.setOnClickListener(new View.OnClickListener() {
@@ -235,5 +252,39 @@ public Boolean isclicked=false;
                 finish();
         }
     });
+    }
+    @Override
+    public void onSaveInstanceState(@Nullable Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString("correctname",correct_name);
+        savedInstanceState.putInt("first_img",selected_imgs[0]);
+        savedInstanceState.putInt("second_img",selected_imgs[1]);
+        savedInstanceState.putInt("third_img",selected_imgs[2]);
+        savedInstanceState.putInt("fourth_img",selected_imgs[3]);
+        savedInstanceState.putString("first_name",selected_names[0]);
+        savedInstanceState.putString("second_name",selected_names[1]);
+        savedInstanceState.putString("third_name",selected_names[2]);
+        savedInstanceState.putString("fourth_name",selected_names[3]);
+
+    }
+    @Override
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        correct_name=savedInstanceState.getString("correctname");
+        selected_imgs[0]=savedInstanceState.getInt("first_img");
+        selected_imgs[1]=savedInstanceState.getInt("second_img");
+        selected_imgs[2]=savedInstanceState.getInt("third_img");
+        selected_imgs[3]=savedInstanceState.getInt("fourth_img");
+        selected_names[0]=savedInstanceState.getString("first_name");
+        selected_names[1]=savedInstanceState.getString("second_name");
+        selected_names[2]=savedInstanceState.getString("third_name");
+        selected_names[3]=savedInstanceState.getString("fourth_name");
+        textView.setText("Which of the following is "+correct_name+" ?");
+        arrayList.clear();
+        arrayList.add(new AlhabetInfo(selected_names[0],selected_imgs[0]));
+        arrayList.add(new AlhabetInfo(selected_names[1],selected_imgs[1]));
+        arrayList.add(new AlhabetInfo(selected_names[2],selected_imgs[2]));
+        arrayList.add(new AlhabetInfo(selected_names[3],selected_imgs[3]));
+        adaptor.notifyDataSetChanged();
     }
 }
